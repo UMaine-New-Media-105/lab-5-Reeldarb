@@ -1,0 +1,72 @@
+let speedX;
+let x;
+
+function setup() {
+  createCanvas(400, 400);
+  speedX = 1;
+  speedY = 1;
+  directionX = 1;
+  directionY = 1;
+  x = width/2;
+  y = width/4
+}
+
+function draw() {
+  background(220);
+  drawSprite(x, y)
+  
+  x = x + speedX;
+  y = y + speedY;
+  
+  if (x > 240 || x < -40){
+    speedX = speedX * -1;
+  }
+  
+  if (y > 240 || y < -40){
+    speedY = speedY * -1;
+  }
+}
+
+function drawSprite(x, y){
+  
+  push();
+  translate(x, y);
+    push();
+  //red shape
+  noStroke()
+  stroke(255);
+  strokeWeight(3);
+  fill("red");
+  beginShape();
+  vertex(75, 40);
+  vertex(125, 40);
+  vertex(160.355, 75.355);
+  vertex(160.355, 125.355);
+  vertex(125, 160.71);
+  vertex(75, 160.71);
+  vertex(39.345, 125.355);
+  vertex(39.345, 75.355);
+  endShape(CLOSE);
+  //STOP lettering
+  noStroke();
+  fill ("white");
+  textSize(40);
+  text('STOP', 46.25, 115);
+  pop();
+
+}
+
+function keyPressed(){
+  if (keyCode == RIGHT_ARROW){
+    speedX = speedX + 1;
+  }
+  if (keyCode == LEFT_ARROW){
+  speedX = speedX + -1;
+  }
+  if (keyCode == DOWN_ARROW){
+    speedY = speedY + 1;
+  }
+  if (keyCode == UP_ARROW){
+  speedY = speedY + -1;
+  }
+}
